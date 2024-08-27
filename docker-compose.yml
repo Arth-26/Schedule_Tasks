@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  code:
+    container_name: code
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    volumes:
+      - ./code:/code
+      - ./data/web/static:/data/web/static/
+    env_file:
+      - ./.env
