@@ -117,6 +117,10 @@ USE_I18N = True
 USE_TZ = True
 
 
+CELERY_BROKER_URL = 'pyamqp://guest@localhost//'
+CELERY_TIME_ZONE = 'America/Sao_Paulo'
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
