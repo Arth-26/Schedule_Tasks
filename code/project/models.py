@@ -21,10 +21,10 @@ class Agenda(models.Model):
 
 class Task(models.Model):
     urgencia_choices = (
-        ('baixa', 'Não Urgente'),
-        ('media', 'Media Prioridade'),
-        ('alta', 'Alta Prioridade'),
-        ('muito alta', 'URGENTE!!')
+        ('Não Urgente', 'Não Urgente'),
+        ('Media Prioridade', 'Media Prioridade'),
+        ('Alta Prioridade', 'Alta Prioridade'),
+        ('URGENTE!!', 'URGENTE!!')
     )
 
     nome = models.CharField(max_length=60, null=False, blank=False)
