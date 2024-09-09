@@ -12,7 +12,6 @@ ENV PYTHONUNBUFFERED 1
 
 # Copia a pasta "code" e "scripts" para dentro do container.
 COPY code /code
-COPY scripts /scripts
 
 # Entra na pasta code no container
 WORKDIR /code
@@ -33,15 +32,10 @@ RUN python -m venv /venv && \
   mkdir -p /data/web/static && \
   chown -R duser:duser /venv && \
   chown -R duser:duser /data/web/static && \
-  chmod -R 755 /data/web/static && \
-  chmod -R +x /scripts
+  chmod -R 755 /data/web/static
 
-# Adiciona a pasta scripts e venv/bin 
 # no $PATH do container.
-ENV PATH="/scripts:/venv/bin:$PATH"
+ENV PATH="/venv/bin:$PATH"
 
 # Muda o usuário para duser
 USER duser
-
-# Executa o arquivo scripts/commands.sh
-CMD ["commands.sh"]

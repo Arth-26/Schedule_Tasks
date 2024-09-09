@@ -3,6 +3,7 @@ version: '3.9'
 services:
   code:
     container_name: code
+    command: sh -c "python manage.py collectstatic --noinput && python manage.py migrate  && python manage.py create_schedule && python manage.py runserver 0.0.0.0:8000"
     build:
       context: .
     ports:
@@ -11,4 +12,38 @@ services:
       - ./code:/code
       - ./data/web/static:/data/web/static/
     env_file:
-      - ./.env
+      - ./dotenv_files/.env
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "status"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+
+  celery:
+    build: .
+    command: celery -A setup worker -l info
+    restart: always
+    volumes:
+      - ./code:/code
+      - ./data/web/static:/data/web/static/
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  celery-beat:
+    build: .
+    command: celery -A setup beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    restart: always
+    volumes:
+      - ./code:/code
+      - ./data/web/static:/data/web/static/
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
