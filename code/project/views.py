@@ -1,3 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
-# Create your views here.
+def redirect_to_localhost(request):
+    return HttpResponseRedirect('http://localhost:8000')
