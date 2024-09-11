@@ -2,6 +2,7 @@ from celery import shared_task
 from django.utils import timezone
 from .models import *
 from datetime import date
+from django.db import connection
 
 
 @shared_task
@@ -24,6 +25,7 @@ def send_message():
                     user = task.agenda.user
                 )
 
+    
     return f'Quantidade de tasks proximas de finalizar = {tasks_de_hoje.count()}'
 
 def clear_message_box():
