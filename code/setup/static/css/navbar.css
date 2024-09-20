@@ -1,0 +1,38 @@
+.navbar{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.separetor{
+    border-bottom: 2px solid #94ADCF;
+    max-width: 95%;
+    margin: auto;
+}
+
+.navbar .container{
+    display: flex;
+    max-width: 95%;
+    margin: auto;
+    justify-content: end;
+}
+
+.navbar-brand a{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.navbar-brand i{
+    color: #94ADCF;
+}
+
+.invisible-icon{
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+}
+
+.visible-icon {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
