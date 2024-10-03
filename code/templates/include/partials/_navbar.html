@@ -1,0 +1,29 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+</head>
+
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container w-100">
+            {% block aditional_navtool %}{% endblock aditional_navtool %}
+            <a class="navbar-brand" onclick="toggleViewMode()">
+                <i id="sun-icon" class="fa-solid fa-sun visible-icon"></i>
+                <i id="moon-icon" class="fa-solid fa-moon invisible-icon"></i>
+            </a>
+        </div>
+    </nav>
+    <div class="separetor"></div>
+</body>
+
+<script>
+    function toggleViewMode() {
+        const lightMode = document.getElementById('sun-icon');
+        const nightMode = document.getElementById('moon-icon');
+    
+        lightMode.classList.toggle('invisible-icon');
+        lightMode.classList.toggle('visible-icon');
+        nightMode.classList.toggle('invisible-icon');
+        nightMode.classList.toggle('visible-icon');
+    }
+</script>
