@@ -1,3 +1,4 @@
+from .forms import LoginForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as auth_login
 from django.shortcuts import redirect, render
@@ -14,7 +15,7 @@ def logout_view(request):
 
 class CustomLoginView(FormView):
     template_name = 'login.html'
-    form_class = AuthenticationForm
+    form_class = LoginForm
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):

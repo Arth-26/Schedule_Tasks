@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class Usuario(AbstractUser):
-    rendimento = models.DecimalField(max_digits=3, decimal_places=1, default=10.0)
+    rendimento = models.DecimalField(max_digits=3, decimal_places=1, default=0.0)
 
     def __str__(self):
         return self.username

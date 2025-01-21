@@ -127,7 +127,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 CELERY_BROKER_URL = 'pyamqp://guest@rabbitmq//'
 CELERY_TIME_ZONE = 'America/Sao_Paulo'
 CELERY_RESULT_BACKEND = 'django-db'
