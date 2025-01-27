@@ -8,12 +8,18 @@
 {% block title %}Bem-Vindo{% endblock title %}
 
 {% block content %}
-    <div class="login-container">
-        <div class="login-card">
-            <div class='card-title'>
-                <h3>Login</h3>
+    <main class="login-main">
+        <div class="login-container">
+            <div class="login-hub">
+                <div class="login-hub-content">
+                    <h1>Bem vindo!</h1>
+                    <p> Faça login para ter acesso a todos os seus compromissos na sua agenda pessoal.</p>
+                </div>
             </div>
-            <div class="container-login-fields">
+            <div class="login-card">
+                <div class='card-title'>
+                    <h3>Sing In</h3>
+                </div>
                 <div class='login-field'>
                     {{form.username}} 
                 </div>
@@ -21,10 +27,10 @@
                     {{form.password}}
                 </div>
                 <button class='login-button'> Login </button>
-            </div>
-            <div class='footer-login-card'>
-                <p>Ainda não é um membro? <a href="">Registre - se</a></p>
+                <div class='footer-login-card'>
+                    <p>Ainda não é um membro? <a href="">Registre-se</a></p>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 {% endblock content %}
