@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block imports %}
-    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+    <link rel="stylesheet" href="{% static '/css/authentication.css' %}">
 {% endblock imports %}
 
-{% block title %}Bem-Vindo{% endblock title %}
+{% block title %}Sing In{% endblock title %}
 
 {% block content %}
-    <main class="login-main">
+    <main class="container-main">
         <div class="login-container">
             <div class="login-hub">
                 <div class="login-hub-content">
@@ -16,10 +16,20 @@
                     <p> Faça login para ter acesso a todos os seus compromissos na sua agenda pessoal.</p>
                 </div>
             </div>
-            <div class="login-card">
+            <form class="login-card" method='POST'>
+                {% csrf_token %}
                 <div class='card-title'>
                     <h3>Sing In</h3>
                 </div>
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger col-12 mx-1" role="alert">
+                        <div id="form_errors">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
                 <div class='login-field'>
                     {{form.username}} 
                 </div>
@@ -28,9 +38,9 @@
                 </div>
                 <button class='login-button'> Login </button>
                 <div class='footer-login-card'>
-                    <p>Ainda não é um membro? <a href="">Registre-se</a></p>
+                    <p>Ainda não é um membro? <a href="{%url 'register'%}">Registre-se</a></p>
                 </div>
-            </div>
+            </form>
         </div>
     </main>
 {% endblock content %}

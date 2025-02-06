@@ -1,14 +1,4 @@
-body{
-    background-color: #101742;
-}
 
-.login-main{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .login-container{
     display: grid;
@@ -34,13 +24,18 @@ body{
     grid-template-rows: 1fr 1fr;
 }
 
-.login-card{
-    padding: 3rem;
+.login-card, .singup-card{
+    padding: 2rem;
     background-color: #e1e3f0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    row-gap: 10px;
+}
+
+.singup-card{
+    justify-content: space-between;
 }
 
 .card-title{
@@ -62,7 +57,7 @@ body{
 }
 
 .login-field{
-    width: 100%;
+    width: 90%;
 }
 
 .login-field input{
@@ -74,6 +69,12 @@ body{
     width: 100%;
 }
 
+.password-field{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+}
+
 .login-field input::placeholder{
     font-size: 14px;
     padding: 5px;
@@ -83,7 +84,7 @@ body{
 .login-button{
     color: white;
     border-radius: 10px;
-    width: 100%;
+    width: 90%;
     margin: 0px auto;
     border:1px solid rgba(0, 0, 0, 0);
     background-color:  #323A78;

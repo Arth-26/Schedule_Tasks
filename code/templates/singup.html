@@ -1,0 +1,65 @@
+{% extends 'include/base.html' %}
+{% load static %}
+
+{% block imports %}
+    <link rel="stylesheet" href="{% static '/css/authentication.css' %}">
+{% endblock imports %}
+
+{% block title %}Sing Up{% endblock title %}
+
+{% block content %}
+    <main class="container-main">
+        <div class="login-container">
+            <form class="singup-card" method='POST'>
+                {% csrf_token %}
+                <div class='card-title'>
+                    <h3>Sing Up</h3>
+                </div>
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger col-12 mx-1" role="alert">
+                        <div id="form_errors">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                <div class='login-field'>
+                    {{form.username}} 
+                </div>
+                <div class='login-field'>
+                    {{form.email}}
+                </div>
+                <div class='login-field password-field'>
+                    {{form.password}}
+                    <input type="password" name='password_confirm' id='id_password_confirm' placeholder='Confirme sua senha' maxlength="128" required>  
+                </div>
+                <button class='login-button'> Cadastre-se </button>
+                <div class='footer-login-card'>
+                    <p>Já tem uma conta? <a href="{%url 'login'%}">Login</a></p>
+                </div>
+            </form>
+            <div class="login-hub">
+                <div class="login-hub-content">
+                    <h1>Bem vindo!</h1>
+                    <p> Sua principal agenda de compromissos se encontra aqui. Preencha seus dados e cria sua conta para continuar!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+{% block script %}
+    <script>
+        $('.login-button').on('click', function(event){
+            event.preventDefault()
+            let password1 = $('#id_password')
+            let password2 = $('#id_password_confirm')
+            if(password1.val() !== password2.val()){
+                mostrarErroCampo(password1, 'As senhas não estão iguais!')
+            }
+            else{
+                $('.singup-card').submit()
+            }
+        })
+    </script>
+{% endblock script%}

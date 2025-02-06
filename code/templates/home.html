@@ -1,4 +1,19 @@
 {% extends 'include/base.html' %}
 {% load static %}
 
+{% block imports %}
+    <link rel="stylesheet" href="{% static '/css/home.css' %}">
+{% endblock imports %}
+
 {% block title %}Home{% endblock title %}
+
+{% block content %}
+    <main class="container-main">
+        <div class="navbar-container">
+            <div class="navbar"></div>
+        </div>
+    </main>
+{% endblock content %}
+
+{% block script %}
+{% endblock script%}

@@ -1,0 +1,8 @@
+.error-field{
+    border: 1px solid rgb(250, 67, 67) !important;
+    box-shadow:  0px 0px 6px 3px rgb(245, 92, 92);
+}
+
+.invalid-feedback{
+    font-size: 12px;
+}
